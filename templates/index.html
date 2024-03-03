@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Document</title>
+    <style>
+      body {
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #00A9FF;
+      }
+
+      #background-video {
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          min-width: 100%;
+          min-height: 100%;
+          z-index: -1;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      }
+
+      .grid-element {
+        padding: 1%;
+      }
+
+      #element11 {
+        width: 50%;
+        margin: 0 25% 0 25%;
+        grid-area: 6/1/7/3;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: center;
+      }
+
+      button {
+        width: 10%;
+        margin: 0 45% 0 45%;
+      }
+
+      .grid-full {
+        background-color: #89cff3;
+        padding: 1%;
+        margin: 1%;
+      }
+
+      .title {
+        margin-top: 1%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      h1 {
+        color: white;
+      }
+
+      .answer{
+          color: white;
+          text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title">
+      <h1 style="text-align: center">Forest Cover Type Prediction</h1>
+    </div>
+    <form class="" action="/pred" method="POST">
+      <div class="grid-full card mb-4 rounded-3 shadow-sm">
+        <div class="grid-container">
+          <div class="grid-element" id="element1">
+            <input
+              class="form-control"
+              type="number"
+              name="elevation"
+              placeholder="Elevation"
+            />
+          </div>
+          <div class="grid-element" id="element2">
+            <input
+              class="form-control"
+              type="number"
+              name="aspect"
+              placeholder="Aspect"
+            />
+          </div>
+          <div class="grid-element" id="element3">
+            <input
+              class="form-control"
+              type="number"
+              name="slope"
+              placeholder="Slope"
+            />
+          </div>
+          <div class="grid-element" id="element4">
+            <input
+              class="form-control"
+              type="number"
+              name="hordt-hyd"
+              placeholder="Horizontal Distance To Hydrology"
+            />
+          </div>
+          <div class="grid-element" id="element5">
+            <input
+              class="form-control"
+              type="number"
+              name="verdt-hyd"
+              placeholder="Vertical Distance To Hydrology"
+            />
+          </div>
+          <div class="grid-element" id="element6">
+            <input
+              class="form-control"
+              type="number"
+              name="hordt-road"
+              placeholder="Horizontal Distance To Road"
+            />
+          </div>
+          <div class="grid-element" id="element7">
+            <input
+              class="form-control"
+              type="number"
+              name="hillshade9"
+              placeholder="Hillshade 9 AM"
+            />
+          </div>
+          <div class="grid-element" id="element8">
+            <input
+              class="form-control"
+              type="number"
+              name="hillshade12"
+              placeholder="Hillshade 12 PM"
+            />
+          </div>
+          <div class="grid-element" id="element9">
+            <input
+              class="form-control"
+              type="number"
+              name="hillshade3"
+              placeholder="Hillshade 3 PM"
+            />
+          </div>
+          <div class="grid-element" id="element10">
+            <input
+              class="form-control"
+              type="number"
+              name="hordt-fire"
+              placeholder="Horizontal Distance To Fire Points"
+            />
+          </div>
+
+          <div class="grid-element" id="element11">
+            <label for="Exam-Type">Soil Type:</label>
+            <select class="form-control" name="soilType" required>
+              <option value="1000000000000000000000000000000000000000">
+                Cathedral family - Rock outcrop complex, extremely stony
+              </option>
+              <option value="0100000000000000000000000000000000000000">
+                Vanet - Ratake families complex, very stony
+              </option>
+              <option value="0010000000000000000000000000000000000000">
+                Haploborolis - Rock outcrop complex, rubbly
+              </option>
+              <option value="0001000000000000000000000000000000000000">
+                Ratake family - Rock outcrop complex, rubbly
+              </option>
+              <option value="0000100000000000000000000000000000000000">
+                Vanet family - Rock outcrop complex complex, rubbly
+              </option>
+              <option value="0000010000000000000000000000000000000000">
+                Vanet - Wetmore families - Rock outcrop complex, stony
+              </option>
+              <option value="0000001000000000000000000000000000000000">
+                Gothic family
+              </option>
+              <option value="0000000100000000000000000000000000000000">
+                Supervisor - Limber families complex
+              </option>
+              <option value="0000000010000000000000000000000000000000">
+                Troutville family, very stony
+              </option>
+              <option value="0000000001000000000000000000000000000000">
+                Bullwark - Catamount families - Rock outcrop complex, rubbly
+              </option>
+              <option value="0000000000100000000000000000000000000000">
+                Bullwark - Catamount families - Rock land complex, rubbly
+              </option>
+              <option value="0000000000010000000000000000000000000000">
+                Legault family - Rock land complex, stony
+              </option>
+              <option value="0000000000001000000000000000000000000000">
+                Catamount family - Rock land - Bullwark family complex, rubbly
+              </option>
+              <option value="0000000000000100000000000000000000000000">
+                Pachic Argiborolis - Aquolis complex
+              </option>
+              <option value="0000000000000010000000000000000000000000">
+                Unspecified in the USFS Soil and ELU Survey
+              </option>
+              <option value="0000000000000001000000000000000000000000">
+                Cryaquolis - Cryoborolis complex
+              </option>
+              <option value="0000000000000000100000000000000000000000">
+                Gateview family - Cryaquolis complex
+              </option>
+              <option value="0000000000000000010000000000000000000000">
+                Rogert family, very stony
+              </option>
+              <option value="0000000000000000001000000000000000000000">
+                Typic Cryaquolis - Borohemists complex
+              </option>
+              <option value="0000000000000000000100000000000000000000">
+                Typic Cryaquepts - Typic Cryaquolls complex
+              </option>
+              <option value="0000000000000000000010000000000000000000">
+                Typic Cryaquolls - Leighcan family, till substratum complex
+              </option>
+              <option value="0000000000000000000001000000000000000000">
+                Leighcan family, till substratum, extremely bouldery
+              </option>
+              <option value="0000000000000000000000100000000000000000">
+                Leighcan family, till substratum - Typic Cryaquolls complex
+              </option>
+              <option value="0000000000000000000000010000000000000000">
+                Leighcan family, extremely stony
+              </option>
+              <option value="0000000000000000000000001000000000000000">
+                Leighcan family, warm, extremely stony
+              </option>
+              <option value="0000000000000000000000000100000000000000">
+                Granile - Catamount families complex, very stony
+              </option>
+              <option value="0000000000000000000000000010000000000000">
+                Leighcan family, warm - Rock outcrop complex, extremely stony
+              </option>
+              <option value="0000000000000000000000000001000000000000">
+                Leighcan family - Rock outcrop complex, extremely stony
+              </option>
+              <option value="0000000000000000000000000000100000000000">
+                Como - Legault families complex, extremely stony
+              </option>
+              <option value="0000000000000000000000000000010000000000">
+                Como family - Rock land - Legault family complex, extremely
+                stony
+              </option>
+              <option value="0000000000000000000000000000001000000000">
+                Leighcan - Catamount families complex, extremely stony
+              </option>
+              <option value="0000000000000000000000000000000100000000">
+                Catamount family - Rock outcrop - Leighcan family complex,
+                extremely stony
+              </option>
+              <option value="0000000000000000000000000000000010000000">
+                Leighcan - Catamount families - Rock outcrop complex, extremely
+                stony
+              </option>
+              <option value="0000000000000000000000000000000001000000">
+                Cryorthents - Rock land complex, extremely stony
+              </option>
+              <option value="0000000000000000000000000000000000100000">
+                Cryumbrepts - Rock outcrop - Cryaquepts complex
+              </option>
+              <option value="0000000000000000000000000000000000010000">
+                Bross family - Rock land - Cryumbrepts complex, extremely stony
+              </option>
+              <option value="0000000000000000000000000000000000001000">
+                Rock outcrop - Cryumbrepts - Cryorthents complex, extremely
+                stony
+              </option>
+              <option value="0000000000000000000000000000000000000100">
+                Leighcan - Moran families - Cryaquolls complex, extremely stony
+              </option>
+              <option value="0000000000000000000000000000000000000010">
+                Moran family - Cryorthents - Leighcan family complex, extremely
+                stony
+              </option>
+              <option value="0000000000000000000000000000000000000001">
+                Moran family - Cryorthents - Rock land complex, extremely stony
+              </option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Predict</button>
+      </div>
+      <h3 class="answer">{{result}}</h3>
+    </form>
+  </body>
+</html>
